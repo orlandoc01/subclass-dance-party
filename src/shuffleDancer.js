@@ -2,8 +2,8 @@ var ShuffleDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
-  this.stepCSSLeft = {left: '-50px'};
-  this.stepCSSRight = {left: '+50px'};
+  this.stepCSSLeft = {left: this.left - 50};
+  this.stepCSSRight = {left: this.left + 50};
 };
 
 ShuffleDancer.prototype = Object.create(Dancer.prototype);
