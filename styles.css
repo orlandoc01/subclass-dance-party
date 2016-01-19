@@ -2,6 +2,8 @@ body, html{
   height:100%;
 }
 body{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;;
   margin: 0px;
   background-color:#444;
   font-size: 18px;
@@ -10,24 +12,33 @@ body{
   background-size: 100%;
 }
 body, a:link, a:visited, a:active{
-  color: lightblue;
+  color: white;
 }
 .title, .addDancerButton{
   padding:5px 12px;
   float:right;
+  text-decoration: none;
 }
 
 .lineUpButton, .danceAroundButton, .findPartnerButton, .explodeDancer{
   float: left;
   padding:5px 12px;
+  text-decoration: none;
 }
 
+.highlighted{
+  border: solid 1px white;
+  border-radius: 5px;
+  background-color: #4682B4;
+}
+
+
 .topbar{
-  height:32px;
-  background-color: #555;
+  height:35px;
+  background-color: #3299CC;
 }
 .title{
-  background-color: #777;
+  background-color: #3299CC;
 }
 .dancer{
   position:absolute;

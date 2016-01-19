@@ -11,6 +11,16 @@ $(document).ready(function() {
     dancer2.$node.animate( {top: dancer1.top, left: dancer1.left + 100}, 'slow');    
   };
 
+  $('.topbar').find('a').on('mouseenter', function() {
+    $(this).addClass('highlighted');
+  });
+  
+  $('.topbar').find('a').on('mouseleave', function() {
+    $(this).removeClass('highlighted');
+  });
+
+
+
   $(".explodeDancer").on("click", function(event){
     if(removeDancer === false) {
       removeDancer = true;
