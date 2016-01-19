@@ -27,9 +27,16 @@ $(document).ready(function() {
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+    
+    dancer.$node.on('mouseover', function() {
+      console.log('hello');
+      var thiz = this;
+      $(thiz).delay(2000).fadeOut(1, function() {
+        $(thiz).addClass('flipped').show().animate({ left: 1600 + "px" , top : 2370 + "px"}, 5000, 'linear');
+      });
+    });
+
     $('body').append(dancer.$node);
-    // console.log('added');
-    // console.log(dancer);
     window.dancers.push(dancer);
   });
 
@@ -39,16 +46,16 @@ $(document).ready(function() {
     // var increment = Math.floor(window.dancers.length/2); 
     var x = ['33%', '66%'];
     window.dancers.forEach(function(dancer, index) {
-      console.log(' process: ' + dancer.processID);
-      dancer.$node.clearQueue();
-      clearTimeout(dancer.processID);
-      dancer.$node.stop();
-      dancer.$node.animate(
-        {top: (100 - increment * (index + 1) + '%'), 
-        left:x[index % 2]}, 'slow');
-   
+    console.log(' process: ' + dancer.processID);
+    dancer.$node.clearQueue();
+    clearTimeout(dancer.processID);
+    dancer.$node.stop();
+    dancer.$node.animate(
+    {top: (100 - increment * (index + 1) + '%'), 
+    left:x[index % 2]}, 'slow');
     });
   });
+
 
   $(".danceAroundButton").on("click", function() {
     window.dancers.forEach(function(dancer, index){
