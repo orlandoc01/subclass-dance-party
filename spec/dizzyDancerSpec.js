@@ -13,22 +13,15 @@ describe("dizzyDancer", function() {
     expect(dizzyDancer.$node).to.be.an.instanceof(jQuery);
   });
 
-  it("should have a move function that increments its radial angle increment", function() {
-    sinon.spy(dizzyDancer, 'move');
-    dizzyDancer.move();
-    expect(dizzyDancer.move.called).to.be.true;
+  it("should have an angle property to trace out circular path", function() {
+
+    expect('angle' in dizzyDancer).to.be.true;
   });
 
-  describe("dances in a circle", function() {
-    it("should call move function every second", function() {
-      sinon.spy(dizzyDancer, "move");
-      expect(dizzyDancer.move.callCount).to.be.equal(0);
-      dizzyDancer.step();
-      clock.tick(1000); // ? it seems an extra tick is necessary...
-      expect(dizzyDancer.move.callCount).to.be.equal(2);
-
-      clock.tick(1);
-      expect(dizzyDancer.move.callCount).to.be.equal(3);
-    });
+  it("should have a radius property", function() {
+    expect('radius' in dizzyDancer).to.be.true;
   });
+
+
+  
 });
