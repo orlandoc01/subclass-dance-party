@@ -35,12 +35,14 @@ $(document).ready(function() {
 
   $(".lineUpButton").on("click", function() {
     //Line up dancers in dancersArray
+    var fromTop = 400; 
+    var x = ['33%', '66%'];
     window.dancers.forEach(function(dancer,index) {
       console.log(' process: ' + dancer.processID);
       dancer.$node.clearQueue();
       clearTimeout(dancer.processID);
       dancer.$node.stop();
-      dancer.$node.css({top:100, left:100});
+      dancer.$node.css({top:this.top, left:x[index % 2]});
    
     });
   });
