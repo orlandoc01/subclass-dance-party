@@ -17,7 +17,7 @@ body, a:link, a:visited, a:active{
   float:right;
 }
 
-.lineUpButton, .danceAroundButton, .findPartnerButton{
+.lineUpButton, .danceAroundButton, .findPartnerButton, .explodeDancer{
   float: left;
   padding:5px 12px;
 }

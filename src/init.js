@@ -1,5 +1,25 @@
 $(document).ready(function() {
   window.dancers = [];
+  var removeDancer = false;
+
+  var pairDancers = function (dancer1, dancer2) { 
+    //arrange dancer 1 and dancer 2
+    clearTimeout(dancer2.processID);
+    clearTimeout(dancer1.processID);
+    dancer1.$node.clearQueue();
+    dancer2.$node.clearQueue();
+    dancer2.$node.animate( {top: dancer1.top, left: dancer1.left + 100}, 'slow');    
+  };
+
+  $(".explodeDancer").on("click", function(event){
+    if(removeDancer === false) {
+      removeDancer = true;
+      $(this).html("Explode Dancer: On");
+    } else {
+      removeDancer = false;
+      $(this).html("Explode Dancer: Off");
+    }
+  });
 
   $(".addDancerButton").on("click", function(event) {
     /* This function sets up the click handlers for the create-dancer
@@ -29,11 +49,13 @@ $(document).ready(function() {
     );
     
     dancer.$node.on('mouseover', function() {
-      $(this).clearQueue();
-      $(this).toggle('explode');
-      window.dancers = window.dancers.filter( function(dancerinList) { 
-        return dancerinList !== dancer;
-      });
+      if(removeDancer) {
+        $(this).clearQueue();
+        $(this).toggle('explode');
+        window.dancers = window.dancers.filter( function(dancerinList) { 
+          return dancerinList !== dancer;
+        });
+      }
     });
 
     $('body').append(dancer.$node);
@@ -59,7 +81,6 @@ $(document).ready(function() {
 
 
   $(".findPartnerButton").on("click", function() {
-    console.log('find clicked');
     var dancersCopy = window.dancers.slice();
     var matchAndArrange = function(dancer1, list) {
       if(list.length === 0) {
@@ -67,15 +88,11 @@ $(document).ready(function() {
       } else if(list.length === 1) {
         dancer2 = list[0];
         //arrange dancer 1 and dancer 2
-        clearTimeout(dancer2.processID);
-        clearTimeout(dancer1.processID);
-        dancer1.$node.clearQueue();
-        dancer2.$node.clearQueue();
-        dancer2.$node.animate( {top: dancer1.top, left: dancer1.left + 50}, 'slow');
+        pairDancers(dancer1 ,dancer2);
       } else {
         dancer2 = list.reduce( function(lastDancer, currDancer) {
-          var sqDistLast = Math.pow((lastDancer.top - dancer1.top),2) + Math.pow((lastDancer.left - dancer1.left), 2);
-          var sqDistCurr = Math.pow((currDancer.top - dancer1.top),2) + Math.pow((currDancer.left - dancer1.left), 2);
+          var sqDistLast = Math.pow((lastDancer.top - dancer1.top), 2) + Math.pow((lastDancer.left - dancer1.left), 2);
+          var sqDistCurr = Math.pow((currDancer.top - dancer1.top), 2) + Math.pow((currDancer.left - dancer1.left), 2);
           if (sqDistCurr < sqDistLast) {
             return currDancer;
           } else {
@@ -83,12 +100,8 @@ $(document).ready(function() {
           }
         });
         //arrange dancer 1 and dancer2
-        clearTimeout(dancer1.processID);
-        clearTimeout(dancer2.processID);
-        dancer1.$node.clearQueue();
-        dancer2.$node.clearQueue();
-        dancer2.$node.animate( {top: dancer1.top, left: dancer1.left + 50}, 'slow');
-        
+        pairDancers(dancer1 ,dancer2);
+
         //remove dancer 2
         list = list.filter( (dancerinList) => dancer2 !== dancerinList);
         //pop and store to dancer 1
