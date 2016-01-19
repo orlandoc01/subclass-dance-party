@@ -62,16 +62,37 @@ $(document).ready(function() {
     console.log('find clicked');
     var dancersCopy = window.dancers.slice();
     var matchAndArrange = function(dancer1, list) {
-      if(list1.length === 0) {
+      if(list.length === 0) {
         return;
-      } else if(list1.length === 1) {
+      } else if(list.length === 1) {
         dancer2 = list[0];
         //arrange dancer 1 and dancer 2
+        clearTimeout(dancer2.processID);
+        clearTimeout(dancer1.processID);
+        dancer1.$node.clearQueue();
+        dancer2.$node.clearQueue();
+        dancer2.$node.animate( {top: dancer1.top, left: dancer1.left + 50}, 'slow');
       } else {
-        dancer2 = list.filter;
+        dancer2 = list.reduce( function(lastDancer, currDancer) {
+          var sqDistLast = Math.pow((lastDancer.top - dancer1.top),2) + Math.pow((lastDancer.left - dancer1.left), 2);
+          var sqDistCurr = Math.pow((currDancer.top - dancer1.top),2) + Math.pow((currDancer.left - dancer1.left), 2);
+          if (sqDistCurr < sqDistLast) {
+            return currDancer;
+          } else {
+            return lastDancer;
+          }
+        });
         //arrange dancer 1 and dancer2
+        clearTimeout(dancer1.processID);
+        clearTimeout(dancer2.processID);
+        dancer1.$node.clearQueue();
+        dancer2.$node.clearQueue();
+        dancer2.$node.animate( {top: dancer1.top, left: dancer1.left + 50}, 'slow');
+        
         //remove dancer 2
+        list = list.filter( (dancerinList) => dancer2 !== dancerinList);
         //pop and store to dancer 1
+        dancer1 = list.pop();
         matchAndArrange(dancer1, list);
       }
     };
