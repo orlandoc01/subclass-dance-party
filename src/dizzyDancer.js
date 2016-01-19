@@ -22,7 +22,7 @@ DizzyDancer.prototype.step = function() {
   this.$node.css({top: newY, left: newX});
   this.processID = setTimeout(function(){
     thiz.step();
-  }, 1);
+  }, 10);
   
 
   // toggle() is a jQuery method to show/hide the <span> tag.

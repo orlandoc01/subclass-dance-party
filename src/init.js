@@ -37,8 +37,10 @@ $(document).ready(function() {
     //Line up dancers in dancersArray
     window.dancers.forEach(function(dancer,index) {
       console.log(' process: ' + dancer.processID);
+      dancer.$node.clearQueue();
       clearTimeout(dancer.processID);
-      dancer.setPosition(100, 100);
+      dancer.$node.stop();
+      dancer.$node.css({top:100, left:100});
    
     });
   });
