@@ -30,9 +30,14 @@ $(document).ready(function() {
     
     dancer.$node.on('mouseover', function() {
       console.log('hello');
-      var thiz = this;
-      $(thiz).delay(2000).fadeOut(1, function() {
-        $(thiz).addClass('flipped').show().animate({ left: 1600 + "px" , top : 2370 + "px"}, 5000, 'linear');
+      //var thiz = this;
+      //$(thiz).delay(2000).fadeOut(1, function() {
+        //$(thiz).addClass('flipped').show().animate({ left: 1600 + "px" , top : 2370 + "px"}, 5000, 'linear');
+      //});
+      $(this).clearQueue();
+      $(this).toggle('explode');
+      window.dancers = window.dancers.filter( function(dancerinList) { 
+        return dancerinList !== dancer;
       });
     });
 
