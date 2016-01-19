@@ -1,4 +1,4 @@
-class DizzyDancer extends Dancer {
+var DizzyDancer = class DizzyDancer extends Dancer {
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
   constructor(top, left, timeBetweenSteps) {

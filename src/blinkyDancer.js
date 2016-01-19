@@ -1,4 +1,4 @@
-class BlinkyDancer extends Dancer {
+var BlinkyDancer = class BlinkyDancer extends Dancer {
   step() {
     // call the old version of step at the beginning of any call to this new version of step
     super.step();

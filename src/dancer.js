@@ -1,5 +1,5 @@
 // Creates and returns a new dancer object that can step
-class Dancer {
+var Dancer = class Dancer {
   // use jQuery to create an HTML <span> tag
   constructor(top, left, timeBetweenSteps) {
     this.top = top;
