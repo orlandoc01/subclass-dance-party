@@ -60,6 +60,22 @@ $(document).ready(function() {
 
   $(".findPartnerButton").on("click", function() {
     console.log('find clicked');
+    var dancersCopy = window.dancers.slice();
+    var matchAndArrange = function(dancer1, list) {
+      if(list1.length === 0) {
+        return;
+      } else if(list1.length === 1) {
+        dancer2 = list[0];
+        //arrange dancer 1 and dancer 2
+      } else {
+        dancer2 = list.filter;
+        //arrange dancer 1 and dancer2
+        //remove dancer 2
+        //pop and store to dancer 1
+        matchAndArrange(dancer1, list);
+      }
+    };
+    matchAndArrange(dancersCopy.pop(), dancersCopy);
   });
 
 
