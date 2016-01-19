@@ -35,16 +35,26 @@ $(document).ready(function() {
 
   $(".lineUpButton").on("click", function() {
     //Line up dancers in dancersArray
-    var fromTop = 400; 
+    var increment = Math.floor(70 / (window.dancers.length / 2 + 1));
+    // var increment = Math.floor(window.dancers.length/2); 
     var x = ['33%', '66%'];
-    window.dancers.forEach(function(dancer,index) {
+    window.dancers.forEach(function(dancer, index) {
       console.log(' process: ' + dancer.processID);
       dancer.$node.clearQueue();
       clearTimeout(dancer.processID);
       dancer.$node.stop();
-      dancer.$node.css({top:this.top, left:x[index % 2]});
+      dancer.$node.animate(
+        {top: (100 - increment * (index + 1) + '%'), 
+        left:x[index % 2]}, 'slow');
    
     });
   });
-});
 
+  $(".danceAroundButton").on("click", function() {
+    window.dancers.forEach(function(dancer, index){
+      dancer.$node.animate({top: dancer.top, left:dancer.left}, 'slow');
+      dancer.step();
+    });
+
+  });
+});
