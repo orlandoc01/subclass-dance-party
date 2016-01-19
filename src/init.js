@@ -28,11 +28,19 @@ $(document).ready(function() {
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
+    // console.log('added');
+    // console.log(dancer);
     window.dancers.push(dancer);
   });
 
   $(".lineUpButton").on("click", function() {
     //Line up dancers in dancersArray
+    window.dancers.forEach(function(dancer,index) {
+      console.log(' process: ' + dancer.processID);
+      clearTimeout(dancer.processID);
+      dancer.setPosition(100, 100);
+   
+    });
   });
 });
 

@@ -15,14 +15,15 @@ DizzyDancer.prototype.constructor = DizzyDancer;
 DizzyDancer.prototype.step = function() {
   // call the old version of step at the beginning of any call to this new version of step
   //
-  console.log(this.angle);
   var thiz = this;
   this.angle += .05;
   var newX = Math.floor(this.left + this.radius * Math.cos(this.angle));
   var newY = Math.floor(this.top + this.radius * Math.sin(this.angle));
-  this.$node.animate({top: newY, left: newX}, 1, function() {
+  this.$node.css({top: newY, left: newX});
+  this.processID = setTimeout(function(){
     thiz.step();
-  });
+  }, 1);
+  
 
   // toggle() is a jQuery method to show/hide the <span> tag.
   // See http://api.jquery.com/category/effects/ for this and
