@@ -1,7 +1,9 @@
 $(document).ready(function() {
   window.dancers = [];
   var removeDancer = false;
-
+  var danceImages = ['url("peanut.gif")', 'url("pink.gif")',
+                    'url("purple.gif")', 'url("green.gif")'];
+  var danceImageIndex = 0;
   var pairDancers = function (dancer1, dancer2) { 
     //arrange dancer 1 and dancer 2
     clearTimeout(dancer2.processID);
@@ -57,7 +59,8 @@ $(document).ready(function() {
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
-    
+    dancer.$node.css(
+      {'background-image': danceImages[danceImageIndex++ % 4]});
     dancer.$node.on('mouseover', function() {
       if(removeDancer) {
         $(this).clearQueue();
