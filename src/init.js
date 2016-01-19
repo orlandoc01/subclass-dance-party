@@ -29,11 +29,6 @@ $(document).ready(function() {
     );
     
     dancer.$node.on('mouseover', function() {
-      console.log('hello');
-      //var thiz = this;
-      //$(thiz).delay(2000).fadeOut(1, function() {
-        //$(thiz).addClass('flipped').show().animate({ left: 1600 + "px" , top : 2370 + "px"}, 5000, 'linear');
-      //});
       $(this).clearQueue();
       $(this).toggle('explode');
       window.dancers = window.dancers.filter( function(dancerinList) { 
@@ -59,6 +54,12 @@ $(document).ready(function() {
     {top: (100 - increment * (index + 1) + '%'), 
     left:x[index % 2]}, 'slow');
     });
+  });
+
+
+
+  $(".findPartnerButton").on("click", function() {
+    console.log('find clicked');
   });
 
 
