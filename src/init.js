@@ -10,7 +10,12 @@ $(document).ready(function() {
     clearTimeout(dancer1.processID);
     dancer1.$node.clearQueue();
     dancer2.$node.clearQueue();
-    dancer2.$node.animate( {top: dancer1.top, left: dancer1.left + 100}, 'slow');    
+
+    var midx = Math.floor((dancer1.left + dancer2.left)/2);
+    var midy = Math.floor((dancer1.top + dancer2.top)/2);
+
+    dancer2.$node.animate( {top: midy, left: midx - 25}, 'slow');
+    dancer1.$node.animate( {top: midy, left: midx + 25}, 'slow');    
   };
 
   $('.topbar').find('a').on('mouseenter', function() {
