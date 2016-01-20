@@ -51,13 +51,11 @@ $(document).ready(function() {
 
     // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
-
     // make a dancer with a random position
-
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
-      Math.random() * 1000
+      $("body").height() * (Math.random() * 0.55 + 0.2) ,
+      $("body").width() * (Math.random() * 0.8 + 0.05),
+      Math.random() * 3000
     );
     dancer.$node.css(
       {'background-image': danceImages[danceImageIndex++ % 4]});
@@ -78,24 +76,22 @@ $(document).ready(function() {
 
   $(".lineUpButton").on("click", function() {
     //Line up dancers in dancersArray
-    var dx = (55 / (Math.ceil(window.dancers.length / 2)));
-    var dy = (15 / (Math.ceil(window.dancers.length / 2)));
+    var dy = (50 / (Math.ceil(window.dancers.length / 2)));
+    var dx = (15 / (Math.ceil(window.dancers.length / 2)));
     // var increment = Math.floor(window.dancers.length/2); 
-    var x = ['33%', '66%'];
     window.dancers.forEach(function(dancer, index) {
-      //console.log(' process: ' + dancer.processID);
       dancer.$node.clearQueue();
       clearTimeout(dancer.processID);
       dancer.$node.stop();
+      var newLeft;
       if (index % 2) {
-        dancer.$node.animate(
-        {top: 30 + dx * (Math.floor(index/2)) + '%', 
-        left: 33 - dy * (Math.floor(index/2)) + '%'}, 'slow');
+        newLeft = 33 - dx * (Math.floor(index/2));
       } else {
-        dancer.$node.animate(
-        {top: 30 + dx * (Math.floor(index/2)) + '%', 
-        left: 56 + dy * (Math.floor(index/2)) + '%'}, 'slow');
+        newLeft = 56 + dx * (Math.floor(index/2));
       }
+        dancer.$node.animate(
+        {top: 30 + dy * (Math.floor(index/2)) + '%', 
+        left: newLeft + '%'}, 'slow');
     });
   });
 
