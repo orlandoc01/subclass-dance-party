@@ -53,6 +53,17 @@ body, a:link, a:visited, a:active{
   background-repeat: no-repeat
 }
 
+.piano-player{
+  position:absolute;
+  bottom: 12%;
+  left: 5%;
+  width: 10%;
+  height: 15%;
+  background-size: 100%;
+  background-repeat: no-repeat;  
+  background-image: url('purple.gif');
+}
+
 
 
 

@@ -2,7 +2,7 @@ $(document).ready(function() {
   window.dancers = [];
   var removeDancer = false;
   var danceImages = ['url("peanut.gif")', 'url("pink.gif")',
-                    'url("purple.gif")', 'url("green.gif")'];
+                    'url("snoopy.gif")', 'url("green.gif")'];
   var danceImageIndex = 0;
   var pairDancers = function (dancer1, dancer2) { 
     //arrange dancer 1 and dancer 2
@@ -53,8 +53,8 @@ $(document).ready(function() {
     var dancerMakerFunction = window[dancerMakerFunctionName];
     // make a dancer with a random position
     var dancer = new dancerMakerFunction(
-      $("body").height() * (Math.random() * 0.55 + 0.2) ,
-      $("body").width() * (Math.random() * 0.8 + 0.05),
+      $("body").height() * (Math.random() * 0.45 + 0.3) ,
+      $("body").width() * (Math.random() * 0.6 + 0.15),
       Math.random() * 3000
     );
     dancer.$node.css(
@@ -76,7 +76,7 @@ $(document).ready(function() {
 
   $(".lineUpButton").on("click", function() {
     //Line up dancers in dancersArray
-    var dy = (50 / (Math.ceil(window.dancers.length / 2)));
+    var dy = (45 / (Math.ceil(window.dancers.length / 2)));
     var dx = (15 / (Math.ceil(window.dancers.length / 2)));
     // var increment = Math.floor(window.dancers.length/2); 
     window.dancers.forEach(function(dancer, index) {
