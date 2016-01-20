@@ -64,6 +64,7 @@ $(document).ready(function() {
     dancer.$node.on('mouseover', function() {
       if(removeDancer) {
         $(this).clearQueue();
+        clearTimeout(dancer.processID);
         $(this).toggle('explode');
         window.dancers = window.dancers.filter( function(dancerinList) { 
           return dancerinList !== dancer;
