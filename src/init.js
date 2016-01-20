@@ -78,7 +78,7 @@ $(document).ready(function() {
 
   $(".lineUpButton").on("click", function() {
     //Line up dancers in dancersArray
-    var increment = Math.floor(70 / (window.dancers.length / 2 + 1));
+    var dx = (70 / (Math.ceil(window.dancers.length / 2)));
     // var increment = Math.floor(window.dancers.length/2); 
     var x = ['33%', '66%'];
     window.dancers.forEach(function(dancer, index) {
@@ -87,7 +87,7 @@ $(document).ready(function() {
     clearTimeout(dancer.processID);
     dancer.$node.stop();
     dancer.$node.animate(
-    {top: (100 - increment * (index + 1) + '%'), 
+    {top: 30 + dx * (Math.floor(index/2)) + '%', 
     left:x[index % 2]}, 'slow');
     });
   });

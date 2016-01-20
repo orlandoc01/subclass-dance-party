@@ -2,7 +2,7 @@ body, html{
   height:100%;
 }
 body{
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;;
   margin: 0px;
   background-color:#444;
@@ -14,7 +14,7 @@ body{
 body, a:link, a:visited, a:active{
   color: white;
 }
-.title, .addDancerButton{
+.addDancerButton{
   padding:5px 12px;
   float:right;
   text-decoration: none;
@@ -38,12 +38,16 @@ body, a:link, a:visited, a:active{
   background-color: #3299CC;
 }
 .title{
-  background-color: #3299CC;
+  font-size: 30pt;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  /*opacity: 50%;}*/
 }
 .dancer{
   position:absolute;
-  width: 10%;
-  height: 35%;
+  width: 8%;
+  height: 28%;
   background-image: url('peanut.gif');
   background-size: 100%;
   background-repeat: no-repeat
