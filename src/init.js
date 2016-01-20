@@ -91,7 +91,7 @@ $(document).ready(function() {
       }
         dancer.$node.animate(
         {top: 30 + dy * (Math.floor(index/2)) + '%', 
-        left: newLeft + '%'}, 'slow');
+        'left': newLeft + '%'}, 'slow');
     });
   });
 
