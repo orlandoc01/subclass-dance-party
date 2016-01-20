@@ -78,17 +78,24 @@ $(document).ready(function() {
 
   $(".lineUpButton").on("click", function() {
     //Line up dancers in dancersArray
-    var dx = (70 / (Math.ceil(window.dancers.length / 2)));
+    var dx = (55 / (Math.ceil(window.dancers.length / 2)));
+    var dy = (15 / (Math.ceil(window.dancers.length / 2)));
     // var increment = Math.floor(window.dancers.length/2); 
     var x = ['33%', '66%'];
     window.dancers.forEach(function(dancer, index) {
-    console.log(' process: ' + dancer.processID);
-    dancer.$node.clearQueue();
-    clearTimeout(dancer.processID);
-    dancer.$node.stop();
-    dancer.$node.animate(
-    {top: 30 + dx * (Math.floor(index/2)) + '%', 
-    left:x[index % 2]}, 'slow');
+      //console.log(' process: ' + dancer.processID);
+      dancer.$node.clearQueue();
+      clearTimeout(dancer.processID);
+      dancer.$node.stop();
+      if (index % 2) {
+        dancer.$node.animate(
+        {top: 30 + dx * (Math.floor(index/2)) + '%', 
+        left: 33 - dy * (Math.floor(index/2)) + '%'}, 'slow');
+      } else {
+        dancer.$node.animate(
+        {top: 30 + dx * (Math.floor(index/2)) + '%', 
+        left: 56 + dy * (Math.floor(index/2)) + '%'}, 'slow');
+      }
     });
   });
 
